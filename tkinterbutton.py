@@ -15,14 +15,21 @@ class Root(Tk):
         self.title('Tkinter Button')
         self.minsize(640, 400)
         self.configure(background='white')
-        self.label = Label(self, text = 'Hello Tkinter')
-        self.label.grid(column=0, row=0)
-        self.button = Button(self, text = 'Click Me', command = self.clickMe)
-        self.button.grid(column=0, row=1)
-    
+        self.initUI()
+        
     def clickMe(self):
-        self.label.configure(text='This is the changed label')
+        self.label.configure(text='Hello' + self.name.get())
         self.label.configure(foreground = 'green')
         
+        
+        
+    def initUI(self):
+        self.name = StringVar()
+        self.label = Label(self, text = 'Enter your name')
+        self.label.grid(column=0, row=0)
+        self.textbox = Entry(self, width=20, textvariable = self.name)
+        self.textbox.grid(column=0,row=1)
+        self.button = Button(self, text='Submit', command = self.clickMe)
+        self.button.grid(column=0,row=2)
 root = Root()
 root.mainloop()
