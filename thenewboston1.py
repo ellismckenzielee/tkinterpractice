@@ -11,24 +11,25 @@ from tkinter import *
 #Creating a blank window, which is equal to root
 root = Tk()
 
-#Create Labels and entry widgets
-#Use .grid to position widgets and labels with more control
+#create function
 
-label_1 = Label(root, text='Name:')
-label_2 = Label(root, text='Password:')
-entry_1 = Entry(root)
-entry_2 = Entry(root)
+def printName():
+    print('Hello my name is ellis')
+    button_1.configure(text='You said it!')
+    
+#create button
+button_1 = Button(root, text='Say my name', command=printName)
+button_1.pack()
 
 
-#Add sticky and the direction to align text in frame/window/column
-label_1.grid(row=0, sticky=E)
-label_2.grid(row=1)
-entry_1.grid(row=0, column=1)
-entry_2.grid(row=1, column=1)
-
-#Checkbox
-c = Checkbutton(root, text='Keep me logged in')
-c.grid(row=2, columnspan=2)
-
+#another technique using events
+def printName2(event):
+    print('Hello my name is Ellis, 2!')
+    
+#create button
+button_2 = Button(root, text='Say my name')
+button_2.bind('<Button-1>', printName2)
+button_2.pack()
+    
 #Keeps the program running 
 root.mainloop()
