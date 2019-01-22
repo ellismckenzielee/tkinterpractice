@@ -11,20 +11,18 @@ from tkinter import *
 #Creating a blank window, which is equal to root
 root = Tk()
 
-#Create labels
-one = Label(root, text='One', bg='red', fg='white')
-one.pack()
+#Create Labels and entry widgets
+#Use .grid to position widgets and labels with more control
 
-two = Label(root, text='Two', bg='green', fg= 'black')
-#Fill X means that it fills the surrounding frame/window
-two.pack(fill=X)
+label_1 = Label(root, text='Name:')
+label_2 = Label(root, text='Password:')
+entry_1 = Entry(root)
+entry_2 = Entry(root)
 
-
-three = Label(root, text='Three', bg='blue', fg='white')
-#Side = LEFT confines the label to the LHS of frame/window
-#Fill Y means that it fills the frame in Y direction
-three.pack(side=LEFT, fill=Y)
-
+label_1.grid(row=0)
+label_2.grid(row=1)
+entry_1.grid(row=0, column=1)
+entry_2.grid(row=1, column=1)
 
 #Keeps the program running 
 root.mainloop()
