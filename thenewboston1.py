@@ -11,24 +11,20 @@ from tkinter import *
 #Creating a blank window, which is equal to root
 root = Tk()
 
+#Create labels
+one = Label(root, text='One', bg='red', fg='white')
+one.pack()
 
-#Split the window into two smaller frames (top and bottom)
-topFrame = Frame(root)
-topFrame.pack()
+two = Label(root, text='Two', bg='green', fg= 'black')
+#Fill X means that it fills the surrounding frame/window
+two.pack(fill=X)
 
-bottomFrame = Frame(root)
-bottomFrame.pack(side=BOTTOM)
 
-#Widgets
-button1 = Button(topFrame, text="Button 1", fg='red')
-button2 = Button(topFrame, text="Button 2", fg='blue')
-button3 = Button(topFrame, text="Button 3", fg='green')
-button4 = Button(bottomFrame, text="Button 4", fg='purple')
+three = Label(root, text='Three', bg='blue', fg='white')
+#Side = LEFT confines the label to the LHS of frame/window
+#Fill Y means that it fills the frame in Y direction
+three.pack(side=LEFT, fill=Y)
 
-button1.pack(side=LEFT)
-button2.pack(side=LEFT)
-button3.pack(side=LEFT)
-button4.pack()
 
 #Keeps the program running 
 root.mainloop()
