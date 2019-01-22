@@ -8,38 +8,26 @@ Created on Thu Jan 17 13:17:23 2019
 
 from tkinter import *
 from tkinter import ttk
+import matplotlib.pyplot as plt 
+from matplotlib.figure import Figure
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg, NavigationToolbar2Tk
 
-
-COLOR1 = 'Blue'
-COLOR2 = 'Red'
-COLOR3 = 'Gold'
  
 class Root(Tk):
     def __init__(self):
         super(Root, self).__init__()
-        self.title('Tkinter Radio Button')
+        self.title('Tkinter Matplotlib')
         self.minsize(640, 400)
         self.configure(background='white')
-        self.radioButton()
-    
-    def radioEvent(self):
-        radSelected = self.radValues.get()
+        self.matplotCanvas()
         
-        if radSelected == 1:
-            self.configure(background = COLOR1)
-        elif radSelected == 2:
-            self.configure(background = COLOR2)
-        elif radSelected == 3:
-            self.configure(background = COLOR3)
+    def matplotCanvas(self):
+        f = Figure(figsize=(5,5), dpi=100)
+        a = f.add_subplot(111)
+        a.plot([1,2,3,4,5,6,7,8], [5,6,1,3,8,9,3,5])
+        canvas = FigureCanvasTkAgg(f, self)
+        canvas.get_tk_widget.pack(side = BOTTOM, fill = BOTH, expand = True)
         
-    def radioButton(self):
-        self.radValues = IntVar()
-        self.rad1 = ttk.Radiobutton(self, text=COLOR1, value=1, variable = self.radValues, command = self.radioEvent)
-        self.rad1.grid(column=0,row=0, sticky=W, columnspan = 3)
-        self.rad2 = ttk.Radiobutton(self, text=COLOR2, value=2, variable = self.radValues, command = self.radioEvent)
-        self.rad2.grid(column=0,row=1, sticky=W, columnspan = 3)
-        self.rad3 = ttk.Radiobutton(self, text=COLOR3, value=3, variable = self.radValues, command = self.radioEvent)
-        self.rad3.grid(column=0,row=2, sticky=W, columnspan = 3)
         
 root = Root()
 root.mainloop()
