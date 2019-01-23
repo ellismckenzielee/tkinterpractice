@@ -12,13 +12,16 @@ import tkinter.messagebox
 
 root = Tk()
 
-tkinter.messagebox.showinfo('Window Title', 'Random Fact')
+#Canvas needed to draw shapes
 
-answer = tkinter.messagebox.askquestion('Question 1', 'Do you enjoy using Python?')
+canvas = Canvas(root, width=200, height=100)
+canvas.pack() 
 
-if answer == 'yes':
-    print('User likes Python')
-else:
-    print('User does not like python')
-    
+blackLine = canvas.create_line(0,0,100, 50)
+redLine = canvas.create_line(0, 100, 100,50, fill='red')
+greenBox = canvas.create_rectangle(25,25, 75,75, fill='green')
+
+
+canvas.delete(redLine)
+
 root.mainloop()
