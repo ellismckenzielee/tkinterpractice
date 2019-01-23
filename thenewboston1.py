@@ -8,27 +8,24 @@ Created on Tue Jan 22 13:53:17 2019
 
 from tkinter import *
 
-#Creating a blank window, which is equal to root
-root = Tk()
 
-def leftClick(event):
-    print('LEFT')
+#Create a class that has main functionality 
+#Master is the main window 
+class usingClasses:
+    def __init__(self, master):
+        frame = Frame(master)
+        frame.pack()
+        
+        self.printButton = Button(frame, text='Print Message', command= self.printMessage)
+        self.printButton.pack(side=LEFT)
 
-def middleClick(event):
-    print('MIDDLE')
+        self.quitButton = Button(frame, text='Quit', command=master.destroy)
+        self.quitButton.pack(side=RIGHT)
 
-def rightClick(event):
-    print('RIGHT')
-
-
-#Add a frame
-frame = Frame(root, width=300, height=250)
-frame.bind('<Button-1>', leftClick)
-frame.bind('<Button-2>', middleClick)
-frame.bind('<Button-3>', rightClick)
-frame.pack()
-
+    def printMessage(self):
+        print('This is the message')
 
 #Keeps the program running 
+root = Tk()
+main = usingClasses(root)
 root.mainloop()
-
