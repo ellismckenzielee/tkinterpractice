@@ -8,24 +8,27 @@ Created on Tue Jan 22 13:53:17 2019
 
 from tkinter import *
 
+def doNothing():
+    print('ok ok I won\'t')
 
-#Create a class that has main functionality 
-#Master is the main window 
-class usingClasses:
-    def __init__(self, master):
-        frame = Frame(master)
-        frame.pack()
-        
-        self.printButton = Button(frame, text='Print Message', command= self.printMessage)
-        self.printButton.pack(side=LEFT)
-
-        self.quitButton = Button(frame, text='Quit', command=master.destroy)
-        self.quitButton.pack(side=RIGHT)
-
-    def printMessage(self):
-        print('This is the message')
-
-#Keeps the program running 
 root = Tk()
-main = usingClasses(root)
+
+menu = Menu(root)
+root.config(menu=menu)
+
+subMenu = Menu(menu)
+menu.add_cascade(label='File', menu=subMenu)
+subMenu.add_command(label='New Project', command=doNothing)
+subMenu.add_command(label='New Window', command=doNothing)
+subMenu.add_separator()
+subMenu.add_command(label='Open File', command=doNothing)
+subMenu.add_separator()
+subMenu.add_command(label='Exit', command=root.destroy)
+
+editMenu = Menu(menu)
+menu.add_cascade(label='Edit', menu=editMenu)
+editMenu.add_command(label='Undo', command=doNothing)
+editMenu.add_command(label='Redo', command=doNothing)
+
+
 root.mainloop()
