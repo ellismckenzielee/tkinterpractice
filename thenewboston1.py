@@ -7,48 +7,18 @@ Created on Tue Jan 22 13:53:17 2019
 """
 
 from tkinter import *
+import tkinter.messagebox
 
-def doNothing():
-    print('ok ok I won\'t')
 
 root = Tk()
 
-# ******* The Main Menu ********
+tkinter.messagebox.showinfo('Window Title', 'Random Fact')
 
-#Add main menu to the root and config
-#By default this is at top of the screen
-menu = Menu(root)
-root.config(menu=menu)
+answer = tkinter.messagebox.askquestion('Question 1', 'Do you enjoy using Python?')
 
-#Add items to the main menu
-subMenu = Menu(menu)
-menu.add_cascade(label='File', menu=subMenu)
-subMenu.add_command(label='New Project', command=doNothing)
-subMenu.add_command(label='New Window', command=doNothing)
-subMenu.add_separator()
-subMenu.add_command(label='Open File', command=doNothing)
-subMenu.add_separator()
-subMenu.add_command(label='Exit', command=root.destroy)
-
-editMenu = Menu(menu)
-menu.add_cascade(label='Edit', menu=editMenu)
-editMenu.add_command(label='Undo', command=doNothing)
-editMenu.add_command(label='Redo', command=doNothing)
-
-# ******* The toolbar ********
-toolbar = Frame(root, bg='black')
-
-insertButton = Button(toolbar, text='Insert Image', command=doNothing)
-insertButton.pack(side=LEFT, padx=2, pady=2)
-
-printButton = Button(toolbar, text='Print', command=doNothing)
-printButton.pack(side=LEFT, padx=2, pady=2)
-
-toolbar.pack(side=TOP, fill=X)
-
-# ******* The Status Bar ********
-status = Label(root, text='Preparing to do nothing...', bd=1, relief=SUNKEN, anchor=W)
-status.pack(side=BOTTOM, fill=X)
-
-
+if answer == 'yes':
+    print('User likes Python')
+else:
+    print('User does not like python')
+    
 root.mainloop()
