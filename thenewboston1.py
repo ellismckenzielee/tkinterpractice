@@ -11,25 +11,24 @@ from tkinter import *
 #Creating a blank window, which is equal to root
 root = Tk()
 
-#create function
+def leftClick(event):
+    print('LEFT')
 
-def printName():
-    print('Hello my name is ellis')
-    button_1.configure(text='You said it!')
-    
-#create button
-button_1 = Button(root, text='Say my name', command=printName)
-button_1.pack()
+def middleClick(event):
+    print('MIDDLE')
+
+def rightClick(event):
+    print('RIGHT')
 
 
-#another technique using events
-def printName2(event):
-    print('Hello my name is Ellis, 2!')
-    
-#create button
-button_2 = Button(root, text='Say my name')
-button_2.bind('<Button-1>', printName2)
-button_2.pack()
-    
+#Add a frame
+frame = Frame(root, width=300, height=250)
+frame.bind('<Button-1>', leftClick)
+frame.bind('<Button-2>', middleClick)
+frame.bind('<Button-3>', rightClick)
+frame.pack()
+
+
 #Keeps the program running 
 root.mainloop()
+
